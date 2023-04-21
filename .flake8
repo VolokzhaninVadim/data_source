@@ -1,0 +1,10 @@
+[flake8]
+max-line-length = 120
+inline-quotes = single
+multiline-quotes = single
+docstring-quotes = single
+exclude = .git, .vscode, env, __pycache__
+avoid-escape = False
+per-file-ignores =
+# imported but unused
+    __init__.py:F401
