@@ -1,0 +1,4 @@
+boto3==1.24.36
+python-dotenv==1.0.0
+flake8==6.0.0
+flake8-quotes==3.3.2
