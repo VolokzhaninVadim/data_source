@@ -5,7 +5,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='data_source',
-    version='1.0.0',
+    version='1.1.0',
     description='Interaction with data source',
     url='https://github.com/VolokzhaninVadim/data_source',
     author='Volokzhanin Vadim',
