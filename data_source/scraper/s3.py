@@ -139,7 +139,7 @@ class S3:
             with open(path + '/' + os.path.basename(s3_file), mode='wb') as f:
                 f.write(file)
 
-    def save_file(self, path_to_file: str, path_s3: str = None) -> None:
+    def save_file(self, path_to_file: str, path_s3: str) -> None:
         '''
         Save file in S3.
 
@@ -158,15 +158,10 @@ class S3:
         In case of empty path to S3 directory the Error is raised.
         In case of local file does not have extension the Error is also raised.
         '''
-        if path_s3 is None:
-            raise AttributeError('You must pass a value to the path_s3 argument.')
-        try:
-            prepared_file_name = [x for x in os.path.splitext(path_to_file) if x != '']
-            if prepared_file_name[1]:
-                with open(path_to_file, 'rb') as file:
-                    self.bucket.Object(path_s3 + '/' + os.path.basename(path_to_file)).put(Body=file)
-        except IndexError:
-            raise AttributeError('You must pass a value to the path_to_file argument.')
+
+        if path_s3 is None or path_to_file is None :
+            raise AttributeError('You must pass a value to the path_s3 and path_to_file.')
+        self.bucket.upload_file(path_to_file, path_s3)
 
     def delete_file(self, file_name: str) -> None:
         '''
